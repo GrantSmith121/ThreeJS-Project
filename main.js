@@ -11,9 +11,11 @@ function init() {
     camera.position.z = 10;
 
     scene = new THREE.Scene();
-       
+    
     const geometry = new THREE.PlaneGeometry( 10, 10 ); // ensure aspect ratio matches image
-    const material = new THREE.MeshBasicMaterial( { map:THREE.ImageUtils.loadTexture('uv_grid_opengl.jpg') } );
+    const loader = new THREE.TextureLoader();
+    const texture = loader.load('/Moss002_1K-JPG_Color.jpg');
+    const material = new THREE.MeshBasicMaterial( { map: texture } );
 
     const mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh );
