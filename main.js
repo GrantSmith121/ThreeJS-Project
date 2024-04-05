@@ -3,7 +3,7 @@ import * as THREE from 'three';
 let camera, scene, renderer;
 
 init();
-animate();
+//animate();
 
 function init() {
 
@@ -15,10 +15,19 @@ function init() {
     const geometry = new THREE.PlaneGeometry( 10, 10 ); // ensure aspect ratio matches image
     const loader = new THREE.TextureLoader();
     const texture = loader.load('/Moss002_1K-JPG_Color.jpg');
-    const material = new THREE.MeshBasicMaterial( { map: texture } );
+
+    const material = new THREE.MeshPhongMaterial({
+        map: texture,
+        normalMap: loader.load('/Moss002_1K-JPG_NormalGL.jpg'),
+        normalScale: (2, 2)
+    });
+
+    // debugging light to view material
+    const light = new THREE.AmbientLight( 0x404040 );
 
     const mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh );
+    scene.add( light );
 
     renderer = new THREE.WebGLRenderer( { antialias: true } );
     renderer.setPixelRatio( window.devicePixelRatio );
@@ -26,8 +35,17 @@ function init() {
     document.body.appendChild( renderer.domElement );
 }
 
-// This is run on every frame >:>
-function animate() {
-    requestAnimationFrame( animate );
+//renderer.render( scene, camera );
+
+function render() {
     renderer.render( scene, camera );
+    requestAnimationFrame(render);
 }
+
+render();
+
+// This is run on every frame >:>
+// function animate() {
+//     requestAnimationFrame( animate );
+//     renderer.render( scene, camera );
+// }
