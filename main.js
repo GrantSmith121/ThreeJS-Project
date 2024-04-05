@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 let camera, scene, renderer;
 
@@ -9,6 +10,7 @@ function init() {
 
     camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.1, 100 );
     camera.position.z = 10;
+
 
     scene = new THREE.Scene();
     
@@ -23,16 +25,25 @@ function init() {
     });
 
     // debugging light to view material
-    const light = new THREE.AmbientLight( 0x404040 );
+    const ambientLight = new THREE.AmbientLight( 0x404040 );
+
+    const light = new THREE.DirectionalLight( 0xff0000, 0.5);
+    light.position.set( 0, 2, 2);
+    const lightHelper = new THREE.DirectionalLightHelper(light, 3);
 
     const mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh );
+    scene.add( ambientLight );
     scene.add( light );
+    scene.add( lightHelper );
 
     renderer = new THREE.WebGLRenderer( { antialias: true } );
     renderer.setPixelRatio( window.devicePixelRatio );
     renderer.setSize( window.innerWidth, window.innerHeight );
     document.body.appendChild( renderer.domElement );
+
+    const controls = new OrbitControls( camera, renderer.domElement );
+    controls.update();
 }
 
 //renderer.render( scene, camera );
