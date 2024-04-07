@@ -1,7 +1,11 @@
 import * as THREE from 'three';
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+//import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 let camera, scene, renderer;
+
+const light = new THREE.SpotLight( 0xffffff, 20);
+let clientX = 0;
+let clientY = 0;
 
 init();
 //animate();
@@ -29,8 +33,8 @@ function init() {
     // debugging light to view material
     const ambientLight = new THREE.AmbientLight( 0x404040 );
 
-    const light = new THREE.SpotLight( 0xffffff, 20);
-    light.position.set( 0, 2, 2 );
+    //const light = new THREE.SpotLight( 0xffffff, 20);
+    //light.position.set( 0, 2, 2 );
     const lightHelper = new THREE.SpotLightHelper(light, 2);
     light.castShadow = true;
 
@@ -46,9 +50,22 @@ function init() {
     document.body.appendChild( renderer.domElement );
 
     // lets me see the setup from different angles
-    const controls = new OrbitControls( camera, renderer.domElement );
-    controls.update();
+    // const controls = new OrbitControls( camera, renderer.domElement );
+    // controls.update();
+
+    // handler for syncing light with mouse movement
+    document.onmousemove = (event) => {
+        let {
+          clientX,
+          clientY
+        } = event
+        console.log(clientX, clientY)
+        light.position.set( clientX / 200, clientY / 200, 2 );
+      }
+    
 }
+
+
 
 //renderer.render( scene, camera );
 
