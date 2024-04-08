@@ -7,6 +7,8 @@ let camera, scene, renderer;
 let clientX = window.innerWidth / 2;
 let clientY = window.innerHeight / 2;
 
+const canvas = document.getElementById("NormalMapBG");
+
 init();
 //animate();
 
@@ -18,7 +20,7 @@ function init() {
 
     scene = new THREE.Scene();
     
-    const geometry = new THREE.PlaneGeometry( 10, 10 ); // ensure aspect ratio matches image
+    const geometry = new THREE.PlaneGeometry( 30, 30 ); // ensure aspect ratio matches image
     const loader = new THREE.TextureLoader(); // shorthand for loading textures
     const texture = loader.load('/Moss002_1K-JPG_Color.jpg');
     const normalMap = loader.load('/Moss002_1K-JPG_NormalDX.jpg');
@@ -44,7 +46,7 @@ function init() {
     scene.add( light );
     scene.add( lightHelper );
 
-    renderer = new THREE.WebGLRenderer( { antialias: true } );
+    renderer = new THREE.WebGLRenderer( { canvas } );
     renderer.setPixelRatio( window.devicePixelRatio );
     renderer.setSize( window.innerWidth, window.innerHeight );
     document.body.appendChild( renderer.domElement );
