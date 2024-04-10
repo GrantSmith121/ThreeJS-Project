@@ -7,6 +7,8 @@ let camera, scene, renderer;
 let clientX = window.innerWidth / 2;
 let clientY = window.innerHeight / 2;
 
+const canvas = document.getElementById("NormalMapBG");
+
 init();
 //animate();
 
@@ -18,7 +20,7 @@ function init() {
 
     scene = new THREE.Scene();
     
-    const geometry = new THREE.PlaneGeometry( 10, 10 ); // ensure aspect ratio matches image
+    const geometry = new THREE.PlaneGeometry( 30, 30 ); // ensure aspect ratio matches image
     const loader = new THREE.TextureLoader(); // shorthand for loading textures
     const texture = loader.load('/Moss002_1K-JPG_Color.jpg');
     const normalMap = loader.load('/Moss002_1K-JPG_NormalDX.jpg');
@@ -31,9 +33,10 @@ function init() {
     normalMap.flipY = false;
 
     // debugging light to view material
-    const ambientLight = new THREE.AmbientLight( 0x404040 );
+    //const ambientLight = new THREE.AmbientLight( 0x404040 );
+    const ambientLight = new THREE.AmbientLight( 0x3d3d3d );
 
-    const light = new THREE.SpotLight( 0xffffff, 100);
+    const light = new THREE.DirectionalLight( 0xededed, 3);
     light.position.set( clientX, clientY, 5 );
     const lightHelper = new THREE.SpotLightHelper(light, 2);
     light.castShadow = true;
@@ -44,7 +47,7 @@ function init() {
     scene.add( light );
     scene.add( lightHelper );
 
-    renderer = new THREE.WebGLRenderer( { antialias: true } );
+    renderer = new THREE.WebGLRenderer( { canvas } );
     renderer.setPixelRatio( window.devicePixelRatio );
     renderer.setSize( window.innerWidth, window.innerHeight );
     document.body.appendChild( renderer.domElement );
@@ -59,7 +62,7 @@ function init() {
           clientX,
           clientY
         } = event
-        light.position.set( ((clientX) - (window.innerWidth / 2)) / 200, ((clientY) - (window.innerHeight / 2)) / -200, 5 );
+        light.position.set( ((clientX) - (window.innerWidth / 2)) / 50, ((clientY) - (window.innerHeight / 2)) / -50, 5 );
         //console.log(light.position);
       }
     
