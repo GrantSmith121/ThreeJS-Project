@@ -36,7 +36,7 @@ function init() {
     //const ambientLight = new THREE.AmbientLight( 0x404040 );
     const ambientLight = new THREE.AmbientLight( 0x3d3d3d );
 
-    const light = new THREE.DirectionalLight( 0xffffff, 3);
+    const light = new THREE.DirectionalLight( 0xededed, 3);
     light.position.set( clientX, clientY, 5 );
     const lightHelper = new THREE.SpotLightHelper(light, 2);
     light.castShadow = true;
