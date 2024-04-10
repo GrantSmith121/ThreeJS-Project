@@ -34,7 +34,7 @@ function init() {
 
     // debugging light to view material
     //const ambientLight = new THREE.AmbientLight( 0x404040 );
-    const ambientLight = new THREE.AmbientLight( 0x000000 );
+    const ambientLight = new THREE.AmbientLight( 0x3d3d3d );
 
     const light = new THREE.DirectionalLight( 0xffffff, 3);
     light.position.set( clientX, clientY, 5 );
