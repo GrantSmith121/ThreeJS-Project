@@ -33,9 +33,10 @@ function init() {
     normalMap.flipY = false;
 
     // debugging light to view material
-    const ambientLight = new THREE.AmbientLight( 0x404040 );
+    //const ambientLight = new THREE.AmbientLight( 0x404040 );
+    const ambientLight = new THREE.AmbientLight( 0x000000 );
 
-    const light = new THREE.SpotLight( 0xffffff, 100);
+    const light = new THREE.DirectionalLight( 0xffffff, 3);
     light.position.set( clientX, clientY, 5 );
     const lightHelper = new THREE.SpotLightHelper(light, 2);
     light.castShadow = true;
@@ -61,7 +62,7 @@ function init() {
           clientX,
           clientY
         } = event
-        light.position.set( ((clientX) - (window.innerWidth / 2)) / 200, ((clientY) - (window.innerHeight / 2)) / -200, 5 );
+        light.position.set( ((clientX) - (window.innerWidth / 2)) / 50, ((clientY) - (window.innerHeight / 2)) / -50, 5 );
         //console.log(light.position);
       }
     
