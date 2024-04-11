@@ -22,8 +22,8 @@ function init() {
     
     const geometry = new THREE.PlaneGeometry( 30, 30 ); // ensure aspect ratio matches image
     const loader = new THREE.TextureLoader(); // shorthand for loading textures
-    const texture = loader.load('/Moss002_1K-JPG_Color.jpg');
-    const normalMap = loader.load('/Moss002_1K-JPG_NormalDX.jpg');
+    const texture = loader.load('/materials/moss/Moss002_1K-JPG_Color.jpg');
+    const normalMap = loader.load('/materials/moss/Moss002_1K-JPG_NormalDX.jpg');
 
     const material = new THREE.MeshLambertMaterial({
         map: texture,
