@@ -9,6 +9,11 @@ let clientY = window.innerHeight / 2;
 
 const canvas = document.getElementById("NormalMapBG");
 
+const mossButton = document.getElementById("moss");
+const foamButton = document.getElementById("foam");
+const leatherButton = document.getElementById("leather");
+const tilesButton = document.getElementById("tiles");
+
 init();
 //animate();
 
@@ -67,6 +72,26 @@ function init() {
       }
     
 }
+
+mossButton.addEventListener('click', function() {
+  // Change materials to moss
+  console.log("moss");
+});
+
+foamButton.addEventListener('click', function() {
+  // Change materials to moss
+  console.log("foam");
+});
+
+leatherButton.addEventListener('click', function() {
+  // Change materials to moss
+  console.log("leather");
+});
+
+tilesButton.addEventListener('click', function() {
+  // Change materials to moss
+  console.log("tiles");
+});
 
 function render() {
     renderer.render( scene, camera );

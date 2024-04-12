@@ -31,6 +31,10 @@
     text-align: center;
   }
 
-  .center {
-
-  }
+.buttons {
+  width: 100%;
+  margin: 8em;
+  display: flex;
+  justify-content: space-evenly;
+  /* background-color: white; */
+}
