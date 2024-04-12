@@ -27,15 +27,44 @@ function init() {
     
     const geometry = new THREE.PlaneGeometry( 30, 30 ); // ensure aspect ratio matches image
     const loader = new THREE.TextureLoader(); // shorthand for loading textures
-    const texture = loader.load('/materials/moss/Moss002_1K-JPG_Color.jpg');
-    const normalMap = loader.load('/materials/moss/Moss002_1K-JPG_NormalDX.jpg');
 
-    const material = new THREE.MeshLambertMaterial({
-        map: texture,
-        normalMap: normalMap,
+    // creates moss material (assigned by default)
+    const mossTexture = loader.load('/materials/moss/Moss002_1K-JPG_Color.jpg');
+    const mossNormalMap = loader.load('/materials/moss/Moss002_1K-JPG_NormalDX.jpg');
+
+    const mossMaterial = new THREE.MeshLambertMaterial({
+        map: mossTexture,
+        normalMap: mossNormalMap,
     });
 
-    normalMap.flipY = false;
+    // creates foam material
+    const foamTexture = loader.load('/materials/foam/AcousticFoam003_1K-JPG_Color.jpg');
+    const foamNormalMap = loader.load('/materials/foam/AcousticFoam003_1K-JPG_NormalDX.jpg');
+
+    const foamMaterial = new THREE.MeshLambertMaterial({
+        map: foamTexture,
+        normalMap: foamNormalMap,
+    });
+
+    // creates leather material
+    const leatherTexture = loader.load('/materials/leather/Leather034C_1K-JPG_Color.jpg');
+    const leatherNormalMap = loader.load('/materials/leather/Leather034C_1K-JPG_NormalDX.jpg');
+
+    const leatherMaterial = new THREE.MeshLambertMaterial({
+        map: leatherTexture,
+        normalMap: leatherNormalMap,
+    });
+
+    // creates tile material
+    const tileTexture = loader.load('/materials/roof_tiles/RoofingTiles013A_1K-JPG_Color.jpg');
+    const tileNormalMap = loader.load('/materials/roof_tiles/RoofingTiles013A_1K-JPG_NormalDX.jpg');
+
+    const tileMaterial = new THREE.MeshLambertMaterial({
+        map: tileTexture,
+        normalMap: tileNormalMap,
+    });
+
+    mossNormalMap.flipY = false;
 
     // debugging light to view material
     //const ambientLight = new THREE.AmbientLight( 0x404040 );
@@ -46,7 +75,7 @@ function init() {
     const lightHelper = new THREE.SpotLightHelper(light, 2);
     light.castShadow = true;
 
-    const mesh = new THREE.Mesh( geometry, material );
+    const mesh = new THREE.Mesh( geometry, mossMaterial );
     scene.add( mesh );
     scene.add( ambientLight );
     scene.add( light );
