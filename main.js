@@ -98,29 +98,26 @@ function init() {
         } = event
         light.position.set( ((clientX) - (window.innerWidth / 2)) / 50, ((clientY) - (window.innerHeight / 2)) / -50, 5 );
         //console.log(light.position);
-      }
+      };
+
+    // these functions change the material based on which button the user clicks
+    mossButton.addEventListener('click', function() {
+      mesh.material = mossMaterial;
+    });
+
+    foamButton.addEventListener('click', function() {
+      mesh.material = foamMaterial;
+    });
+
+    leatherButton.addEventListener('click', function() {
+      mesh.material = leatherMaterial;
+    });
+
+    tilesButton.addEventListener('click', function() {
+      mesh.material = tileMaterial;
+    });
     
 }
-
-mossButton.addEventListener('click', function() {
-  // Change materials to moss
-  console.log("moss");
-});
-
-foamButton.addEventListener('click', function() {
-  // Change materials to moss
-  console.log("foam");
-});
-
-leatherButton.addEventListener('click', function() {
-  // Change materials to moss
-  console.log("leather");
-});
-
-tilesButton.addEventListener('click', function() {
-  // Change materials to moss
-  console.log("tiles");
-});
 
 function render() {
     renderer.render( scene, camera );
