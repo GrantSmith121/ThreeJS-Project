@@ -9,6 +9,11 @@ let clientY = window.innerHeight / 2;
 
 const canvas = document.getElementById("NormalMapBG");
 
+const mossButton = document.getElementById("moss");
+const foamButton = document.getElementById("foam");
+const leatherButton = document.getElementById("leather");
+const tilesButton = document.getElementById("tiles");
+
 init();
 //animate();
 
@@ -22,15 +27,44 @@ function init() {
     
     const geometry = new THREE.PlaneGeometry( 30, 30 ); // ensure aspect ratio matches image
     const loader = new THREE.TextureLoader(); // shorthand for loading textures
-    const texture = loader.load('/Moss002_1K-JPG_Color.jpg');
-    const normalMap = loader.load('/Moss002_1K-JPG_NormalDX.jpg');
 
-    const material = new THREE.MeshLambertMaterial({
-        map: texture,
-        normalMap: normalMap,
+    // creates moss material (assigned by default)
+    const mossTexture = loader.load('/materials/moss/Moss002_1K-JPG_Color.jpg');
+    const mossNormalMap = loader.load('/materials/moss/Moss002_1K-JPG_NormalDX.jpg');
+
+    const mossMaterial = new THREE.MeshLambertMaterial({
+        map: mossTexture,
+        normalMap: mossNormalMap,
     });
 
-    normalMap.flipY = false;
+    // creates foam material
+    const foamTexture = loader.load('/materials/foam/AcousticFoam003_1K-JPG_Color.jpg');
+    const foamNormalMap = loader.load('/materials/foam/AcousticFoam003_1K-JPG_NormalDX.jpg');
+
+    const foamMaterial = new THREE.MeshLambertMaterial({
+        map: foamTexture,
+        normalMap: foamNormalMap,
+    });
+
+    // creates leather material
+    const leatherTexture = loader.load('/materials/leather/Leather034C_1K-JPG_Color.jpg');
+    const leatherNormalMap = loader.load('/materials/leather/Leather034C_1K-JPG_NormalDX.jpg');
+
+    const leatherMaterial = new THREE.MeshLambertMaterial({
+        map: leatherTexture,
+        normalMap: leatherNormalMap,
+    });
+
+    // creates tile material
+    const tileTexture = loader.load('/materials/roof_tiles/RoofingTiles013A_1K-JPG_Color.jpg');
+    const tileNormalMap = loader.load('/materials/roof_tiles/RoofingTiles013A_1K-JPG_NormalDX.jpg');
+
+    const tileMaterial = new THREE.MeshLambertMaterial({
+        map: tileTexture,
+        normalMap: tileNormalMap,
+    });
+
+    mossNormalMap.flipY = false;
 
     // debugging light to view material
     //const ambientLight = new THREE.AmbientLight( 0x404040 );
@@ -41,7 +75,7 @@ function init() {
     const lightHelper = new THREE.SpotLightHelper(light, 2);
     light.castShadow = true;
 
-    const mesh = new THREE.Mesh( geometry, material );
+    const mesh = new THREE.Mesh( geometry, mossMaterial );
     scene.add( mesh );
     scene.add( ambientLight );
     scene.add( light );
@@ -64,7 +98,24 @@ function init() {
         } = event
         light.position.set( ((clientX) - (window.innerWidth / 2)) / 50, ((clientY) - (window.innerHeight / 2)) / -50, 5 );
         //console.log(light.position);
-      }
+      };
+
+    // these functions change the material based on which button the user clicks
+    mossButton.addEventListener('click', function() {
+      mesh.material = mossMaterial;
+    });
+
+    foamButton.addEventListener('click', function() {
+      mesh.material = foamMaterial;
+    });
+
+    leatherButton.addEventListener('click', function() {
+      mesh.material = leatherMaterial;
+    });
+
+    tilesButton.addEventListener('click', function() {
+      mesh.material = tileMaterial;
+    });
     
 }
 
