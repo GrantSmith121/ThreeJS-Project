@@ -52,3 +52,12 @@ button:hover {
   background-color: black;
   color: white;
 }
+
+.side-by-side {
+  display: flex;
+}
+
+.example-main {
+  margin: 2em;
+  /* padding: 2em; */
+}

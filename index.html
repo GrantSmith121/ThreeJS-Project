@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Normal Maps</title>
+    <title>Home Page</title>
     <style>
         body { margin: 0; }
     </style>
@@ -16,22 +16,25 @@
 
 
 <body>
-    
-    <canvas id="NormalMapBG"></canvas>
-    <main class="bodyOverlay">
-        <!-- <p style="background-color: white;">Inside Text</p> -->
-        <h1>Normal Maps</h1>
-        <div class="buttons">
-            <button id="moss">Moss</button>
-            <button id="foam">Silencing Foam</button>
-            <button id="leather">Leather</button>
-            <button id="tiles">Roof Tiles</button>
+    <h1>What are Normal Maps?</h1>    
+
+    <main class="example-main">
+        <div class="side-by-side">
+            <div>
+            <p>Normal maps are image files used to simulate lighting in a 3d environment. Just like a color texture, this is a 2d image placed on a 3d object. However, instead of being used to directly color a mesh, this file is used for lighting purposes.</p>
+            <p>These images take advantage of a coincidence between how we percieve color and the fact that there are three spacial dimensions.In our eyes, there are three "cones" that allow us to see color. They are sensitive to red, green and blue wavelengths of light (or rather, what our eyes percieve as red, green and blue. In reality, our eyes use these frequencies of light to make these colors up!) Our eyes are able to intepret wavelengths between these colors because certain wavelengths, such as yellow, can trigger multiple cones. Yellow, for example, triggers both the red and green cones. Screens take advantage of this fact by having only red, green and blue diodes. This simplifies the structure of the screen.</p>
+            </div>
+            <img src="/materials/moss/Moss002_1K-JPG_NormalDX.jpg" alt="A normal map for a mossy texture" width="500">
+        </div>
+        <div class="side-by-side">
+            <img src="/original.png" alt="An image demonstrating how a normal map is stored into an image file" width="1000">
+            <div>
+                <p>The result of this is that digital images have three layers (well, sometimes four. The fourth being for transparency). These "channels" show how much each type of diode will light up in a pixel. All together, these channels add together to make all of the colors you see in an image. Regular images use these channels to store color information, but Normal Maps use these channels to store lighting data</p>
+                <p>To create a normal map, the software being used will take three black and white images of the object/texture. One in which the subject is lit from left to right, another in which the subject is lit from top down and the third which is the lighting from straight on. Inverting these images gives you the lighting from the other direction, so combined this texture can simulate lighting from any point in 3d space in front of the object. Because there are three channels in every image and three lighting images, each lighting image can be colored one of the primary colors and then combined into one image. The result is an image with strange colors that contains all of the data needed to shade a flat object as if it has 3d texture.</p>
+            </div>
+            
         </div>
     </main>
     
-    
-    <!-- <h1>Test</h1> -->
-
-    <script type="module" src="/main.js"></script>
 </body>
 </html>
