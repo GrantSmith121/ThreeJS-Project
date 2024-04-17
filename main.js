@@ -84,7 +84,12 @@ function init() {
     renderer = new THREE.WebGLRenderer( { canvas } );
     renderer.setPixelRatio( window.devicePixelRatio );
     renderer.setSize( window.innerWidth, window.innerHeight );
-    document.body.appendChild( renderer.domElement );
+    // document.body.appendChild( renderer.domElement );
+    const HTMLplane = renderer.domElement.style;
+    HTMLplane.position = "fixed";
+    HTMLplane.top = "0px";
+    HTMLplane.left = "0px";
+    HTMLplane.zIndex = "-1";
 
     // lets me see the setup from different angles
     // const controls = new OrbitControls( camera, renderer.domElement );

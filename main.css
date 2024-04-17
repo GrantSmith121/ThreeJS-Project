@@ -122,3 +122,9 @@ button:hover {
   justify-content: center;
   background-color: black;
 }
+
+.fixedBG {
+  position: fixed;
+  left: 0;
+  top: 0;
+}
