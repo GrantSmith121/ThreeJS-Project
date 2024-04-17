@@ -50,6 +50,11 @@ body {
     /* background-color: white; */
   }
 
+  .example-header {
+    background-color: black;
+    color: white;
+  }
+
   h2 {
     font-size: 5em;
     font-family: "Red Hat Display", sans-serif;
@@ -69,6 +74,13 @@ body {
 
   .article-body {
     margin: 2em;
+  }
+
+  .article-button {
+    font-size: 5em;
+    margin: 2em;
+    font-family: "Red Hat Display", sans-serif;
+    font-weight: 500;
   }
 
   p {
@@ -103,4 +115,10 @@ button:hover {
 .example-main {
   margin: 2em;
   /* padding: 2em; */
+}
+
+.demo-section {
+  display: flex;
+  justify-content: center;
+  background-color: black;
 }
