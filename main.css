@@ -7,6 +7,10 @@
     opacity: 1;
 }
 
+body {
+  font-family: "Red Hat Display", sans-serif;
+}
+
 .bodyOverlay {
     /* left: 20px;
     top: 20px; */
@@ -18,19 +22,57 @@
     width: 100%;
     font-family: "Red Hot Display", sans-serif;
   }
+  
+  .article-header {
+    /* background-color: black; */
+    /* color: white; */
+    font-family: "Red Hat Display", sans-serif;
+    background-color: black;
+    color: white;
+  }
+
 
   h1 {
-    background-color: white;
-    border-bottom: 10px solid black;
+    /* background-color: white; */
+    /* border-bottom: 10px solid black; */
     /* border-radius: 30px; */
     /* margin-top: 5px; */
     margin: 0px;
-    padding: 10px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-bottom: 0px;
     font-size: 5em;
     width: 100%;
     height: 100%;
     text-align: center;
     font-weight: 900;
+    font-family: "Red Hat Display", sans-serif;
+    /* background-color: white; */
+  }
+
+  h2 {
+    font-size: 5em;
+    font-family: "Red Hat Display", sans-serif;
+    text-align: center;
+    padding-top: 0px;
+    margin-top: 0px;
+    padding-bottom: 10px;
+  }
+
+  h3 {
+    font-size: 3em;
+  }
+
+  .article-title {
+    font-size: 10em;
+  }
+
+  .article-body {
+    margin: 2em;
+  }
+
+  p {
+    font-family: "Red Hat Display", sans-serif;
   }
 
 .buttons {
@@ -55,6 +97,7 @@ button:hover {
 
 .side-by-side {
   display: flex;
+  justify-content: space-around;
 }
 
 .example-main {
