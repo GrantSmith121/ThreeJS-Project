@@ -111,24 +111,28 @@ function init() {
     // these functions change the material based on which button the user clicks
     mossButton.addEventListener('click', function() {
       mesh.material = mossMaterial;
+      // ensures normal map intensity value from slider remains the same after selecting different normal map
+      mesh.material.normalScale = new THREE.Vector2( rangeInput.value / 100, rangeInput.value / 100 );
     });
 
     foamButton.addEventListener('click', function() {
       mesh.material = foamMaterial;
+      mesh.material.normalScale = new THREE.Vector2( rangeInput.value / 100, rangeInput.value / 100 );
     });
 
     leatherButton.addEventListener('click', function() {
       mesh.material = leatherMaterial;
+      mesh.material.normalScale = new THREE.Vector2( rangeInput.value / 100, rangeInput.value / 100 );
     });
 
     tilesButton.addEventListener('click', function() {
       mesh.material = tileMaterial;
-    });
-    
-    rangeInput.addEventListener('input', function() {
-      // console.log(rangeInput.value);
       mesh.material.normalScale = new THREE.Vector2( rangeInput.value / 100, rangeInput.value / 100 );
-      // console.log(rangeInput.)
+    });
+
+    // slider controller for normal map intensity
+    rangeInput.addEventListener('input', function() {
+      mesh.material.normalScale = new THREE.Vector2( rangeInput.value / 100, rangeInput.value / 100 );
     })
 
     // mesh.material.normalScale = new THREE.Vector2( 0.1, 0.1 );
