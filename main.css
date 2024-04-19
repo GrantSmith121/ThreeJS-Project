@@ -39,7 +39,6 @@ body {
     /* margin-top: 5px; */
     margin: 0px;
     padding-top: 10px;
-    padding-left: 10px;
     padding-bottom: 0px;
     font-size: 5em;
     width: 100%;
@@ -127,4 +126,16 @@ button:hover {
   position: fixed;
   left: 0;
   top: 0;
+}
+
+.slider-box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.slider {
+  width: 70%;
+  -webkit-appearance: none;
+  height: 25px;
 }

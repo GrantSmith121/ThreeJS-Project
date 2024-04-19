@@ -14,6 +14,9 @@ const foamButton = document.getElementById("foam");
 const leatherButton = document.getElementById("leather");
 const tilesButton = document.getElementById("tiles");
 
+const rangeInput = document.getElementById("rangeInput");
+let normalIntensity = 1;
+
 init();
 //animate();
 
@@ -122,6 +125,11 @@ function init() {
       mesh.material = tileMaterial;
     });
     
+    rangeInput.addEventListener('input', function() {
+      console.log(rangeInput.value);
+    })
+
+    // mesh.material.normalScale = new THREE.Vector2( 0.1, 0.1 );
 }
 
 function render() {
