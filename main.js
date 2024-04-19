@@ -126,7 +126,9 @@ function init() {
     });
     
     rangeInput.addEventListener('input', function() {
-      console.log(rangeInput.value);
+      // console.log(rangeInput.value);
+      mesh.material.normalScale = new THREE.Vector2( rangeInput.value / 100, rangeInput.value / 100 );
+      // console.log(rangeInput.)
     })
 
     // mesh.material.normalScale = new THREE.Vector2( 0.1, 0.1 );
