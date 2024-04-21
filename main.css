@@ -86,12 +86,14 @@ body {
     font-family: "Red Hat Display", sans-serif;
   }
 
+section {
+  width: 70%;
+}
+
 .buttons {
-  width: 100%;
-  margin: 8em;
   display: flex;
-  justify-content: space-evenly;
-  /* background-color: white; */
+  justify-content: space-between;
+  margin-top: 6em;
 }
 
 button {
@@ -128,6 +130,15 @@ button:hover {
   top: 0;
 }
 
+.slider-section {
+  /* width: 70%; */
+  /* padding: 2em; */
+  background-color: white;
+  outline: 3px solid black;
+  
+  
+}
+
 .slider-box {
   width: 100%;
   display: flex;
@@ -135,7 +146,33 @@ button:hover {
 }
 
 .slider {
-  width: 70%;
+  width: 93%;
   -webkit-appearance: none;
   height: 25px;
+  padding: 0.3em;
+  outline: 3px solid black;
+  margin-bottom: 1em;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 25px;
+  height: 25px;
+  background: black;
+}
+
+.slider::-moz-range-thumb {
+  -webkit-appearance: none;
+  width: 25px;
+  height: 25px;
+  background: black;
+}
+
+.back-button {
+  display: flex;
+  justify-content: center;
+  padding: 8em;
+  font-family: "Red Hat Display", sans-serif;
+  font-weight: 400;
+  font-size: 2em;
 }
