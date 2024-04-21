@@ -182,4 +182,31 @@ button:hover {
   height: 300px;
   cursor: pointer;
   background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%), linear-gradient(to right, white, red);
+  margin: 1em;
+}
+
+.hue-slider {
+  writing-mode: vertical-lr;
+  -webkit-appearance: none;
+  width: 25px;
+  /* height: 500px; */
+  background: linear-gradient(180deg, #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff, #ff0000);
+}
+
+.hue-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  background: black;
+}
+
+.hue-slider::-moz-range-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  background: black;
+}
+
+.picker-and-slider {
+  display: flex;
 }
