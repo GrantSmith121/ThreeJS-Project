@@ -38,7 +38,9 @@
             <div class="slider-section" style="padding-bottom: 1em;">
                 <h3 style="text-align: center; padding: 0.5em;">Light Color</h3>
                 <div class="picker-and-slider">
-                    <div class="color-picker"></div>
+                    <div class="color-picker" id="color-container">
+                        <div id="point"></div>
+                    </div>
                     <input type="range" min="0" max="360" value="0" class="hue-slider" id="hue-input">
                 </div>
             </div>
@@ -61,6 +63,11 @@
         let lightColor = getComputedStyle(root).getPropertyValue('--light-color');
         const colorPicker = document.querySelector('.color-picker');
 
+        const colorContainer = document.getElementById("color-container");
+        const point = document.getElementById("point");
+
+        let isDragging = false;
+
         // parse the HSL values
         const hslRegex = /hsl\((\d+),\s*([\d.]+)%,\s*([\d.]+)%\)/;
         const [, hue, saturation, lightness] = lightColor.match(hslRegex);
@@ -74,6 +81,25 @@
             root.style.setProperty('--light-color', `hsl(${hueInput.value}, ${saturationPercent}, ${lightnessPercent})`);
             // console.log(`Updated light color: ${getComputedStyle(root).getPropertyValue('--light-color')}`);
             colorPicker.style.background = 'linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%), linear-gradient(to right, white, var(--light-color))';            
+        });
+
+        // checks to see if the user has started dragging on the color picker
+        point.addEventListener("mousedown", function(event) {
+            isDragging = true;
+        });
+
+        document.addEventListener("mousemove", function(event) {
+            if (isDragging) {
+                let xPOS = event.clientX;
+                let yPOS = event.clientY;
+
+                point.style.left = xPOS + "px";
+                point.style.top = yPOS + "px";
+            }
+        });
+
+        document.addEventListener("mouseup", function() {
+            isDragging = false;
         });
     </script>
 </body>

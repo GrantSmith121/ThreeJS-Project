@@ -190,6 +190,14 @@ button:hover {
   margin: 1em;
 }
 
+#point {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: black;
+  cursor: move;
+}
+
 .hue-slider {
   writing-mode: vertical-lr;
   -webkit-appearance: none;
