@@ -38,8 +38,8 @@
             <div class="slider-section" style="padding-bottom: 1em;">
                 <h3 style="text-align: center; padding: 0.5em;">Light Color</h3>
                 <div class="picker-and-slider">
-                <div class="color-picker"></div>
-                <input type="range" min="0" max="100" value="0" class="hue-slider" id="hueInput">
+                    <div class="color-picker"></div>
+                    <input type="range" min="0" max="360" value="0" class="hue-slider" id="hue-input">
                 </div>
             </div>
             
@@ -54,5 +54,28 @@
     <div class="fixedBG">
         <script type="module" src="/main.js"></script>
     </div>
+
+    <script>
+        const hueInput = document.getElementById("hue-input");
+        let root = document.documentElement;
+        let lightColor = getComputedStyle(root).getPropertyValue('--light-color');
+
+        // Parse the HSL values
+        const hslRegex = /hsl\((\d+),\s*([\d.]+)%,\s*([\d.]+)%\)/;
+        const [, hue, saturation, lightness] = lightColor.match(hslRegex);
+
+        // console.log("Hue:", hue); // Output: Hue: 210
+        // console.log("Saturation:", saturation); // Output: Saturation: 70
+        // console.log("Lightness:", lightness); // Output: Lightness: 50
+
+        let saturationPercent = (saturation + "%");
+        let lightnessPercent = (lightness + "%");
+
+        hueInput.addEventListener('input', function() {
+            console.log(saturationPercent);
+            console.log(lightnessPercent);
+            root.style.setProperty('--light-color', 'hsl($(hueInput.value), "100%", "50%")');            
+        })
+    </script>
 </body>
 </html>

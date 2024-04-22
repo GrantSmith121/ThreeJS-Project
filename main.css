@@ -1,3 +1,7 @@
+:root {
+  --light-color: hsl(0, 100%, 50%);
+}
+
 #NormalMapBG {
     display: block;
     position: absolute;
@@ -181,7 +185,7 @@ button:hover {
   width: 800px;
   height: 300px;
   cursor: pointer;
-  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%), linear-gradient(to right, white, red);
+  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%), linear-gradient(to right, white, var(--light-color));
   margin: 1em;
 }
 
@@ -197,14 +201,18 @@ button:hover {
   -webkit-appearance: none;
   width: 20px;
   height: 20px;
-  background: black;
+  background: var(--light-color);
+  /* background: linear-gradient(180deg, var(--light-color), white); */
+  border: 5px solid black;
 }
 
 .hue-slider::-moz-range-thumb {
   -webkit-appearance: none;
   width: 20px;
   height: 20px;
-  background: black;
+  background: var(--light-color);
+  /* background: linear-gradient(180deg, var(--light-color), white); */
+  border: 5px solid black;
 }
 
 .picker-and-slider {
