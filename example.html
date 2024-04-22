@@ -50,7 +50,7 @@
     </main>
     
     
-    <!-- <h1>Test</h1> -->
+    <!-- This is the background created by Three.JS -->
     <div class="fixedBG">
         <script type="module" src="/main.js"></script>
     </div>
@@ -61,22 +61,18 @@
         let lightColor = getComputedStyle(root).getPropertyValue('--light-color');
         const colorPicker = document.querySelector('.color-picker');
 
-        // Parse the HSL values
+        // parse the HSL values
         const hslRegex = /hsl\((\d+),\s*([\d.]+)%,\s*([\d.]+)%\)/;
         const [, hue, saturation, lightness] = lightColor.match(hslRegex);
 
-        // console.log("Hue:", hue); // Output: Hue: 210
-        // console.log("Saturation:", saturation); // Output: Saturation: 70
-        // console.log("Lightness:", lightness); // Output: Lightness: 50
-
+        // ensures that the CSS variable recieves the values as percentages
         let saturationPercent = (saturation + "%");
         let lightnessPercent = (lightness + "%");
 
+        // updates the hue value when the hue slider is used
         hueInput.addEventListener('input', function() {
-            // console.log(saturationPercent);
-            // console.log(lightnessPercent);
             root.style.setProperty('--light-color', `hsl(${hueInput.value}, ${saturationPercent}, ${lightnessPercent})`);
-            console.log(`Updated light color: ${getComputedStyle(root).getPropertyValue('--light-color')}`);
+            // console.log(`Updated light color: ${getComputedStyle(root).getPropertyValue('--light-color')}`);
             colorPicker.style.background = 'linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%), linear-gradient(to right, white, var(--light-color))';            
         });
     </script>
