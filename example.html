@@ -84,17 +84,37 @@
         });
 
         // checks to see if the user has started dragging on the color picker
-        point.addEventListener("mousedown", function(event) {
+        colorPicker.addEventListener("mousedown", function(event) {
             isDragging = true;
         });
 
         document.addEventListener("mousemove", function(event) {
             if (isDragging) {
-                let xPOS = event.clientX;
-                let yPOS = event.clientY;
+                // let xPOS = event.clientX - colorContainer.getBoundingClientRect().left - point.offsetWidth / 2;
+                // let yPOS = event.clientY - colorContainer.getBoundingClientRect().top - point.offsetHeight / 2;
+                
+
+                // xPOS = Math.max(0, Math.min(xPOS, colorContainer.offsetWidth - point.offsetWidth));
+                // yPOS = Math.max(0, Math.min(yPOS, colorContainer.offsetHeight - point.offsetHeight));
+
+                // point.style.left = xPOS + "px";
+                // point.style.top = yPOS + "px";
+
+                let mouseX = event.clientX;
+                let mouseY = event.clientY;
+
+                xPOS = event.clientX - 10;
+                yPOS = event.clientY + 280;
 
                 point.style.left = xPOS + "px";
                 point.style.top = yPOS + "px";
+
+                console.log("Mouse pos: " + mouseX + " " + mouseY);
+                // console.log(mouseY);
+                console.log("Pointer pos: " + xPOS + " " + yPOS);
+
+                // console.log(xPOS);
+                // console.log(yPOS);
             }
         });
 
