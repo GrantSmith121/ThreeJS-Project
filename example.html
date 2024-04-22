@@ -59,6 +59,7 @@
         const hueInput = document.getElementById("hue-input");
         let root = document.documentElement;
         let lightColor = getComputedStyle(root).getPropertyValue('--light-color');
+        const colorPicker = document.querySelector('.color-picker');
 
         // Parse the HSL values
         const hslRegex = /hsl\((\d+),\s*([\d.]+)%,\s*([\d.]+)%\)/;
@@ -72,10 +73,12 @@
         let lightnessPercent = (lightness + "%");
 
         hueInput.addEventListener('input', function() {
-            console.log(saturationPercent);
-            console.log(lightnessPercent);
-            root.style.setProperty('--light-color', 'hsl($(hueInput.value), "100%", "50%")');            
-        })
+            // console.log(saturationPercent);
+            // console.log(lightnessPercent);
+            root.style.setProperty('--light-color', `hsl(${hueInput.value}, ${saturationPercent}, ${lightnessPercent})`);
+            console.log(`Updated light color: ${getComputedStyle(root).getPropertyValue('--light-color')}`);
+            colorPicker.style.background = 'linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%), linear-gradient(to right, white, var(--light-color))';            
+        });
     </script>
 </body>
 </html>
