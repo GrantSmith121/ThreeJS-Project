@@ -90,80 +90,26 @@
 
         document.addEventListener("mousemove", function(event) {
             if (isDragging) {
-                let x = event.clientX - colorContainer.getBoundingClientRect().left - point.offsetWidth / 2;
-                let y = event.clientY - colorContainer.getBoundingClientRect().top - point.offsetHeight / 2;
+                let xPOS = event.clientX;
+                let yPOS = event.clientY;
 
-                // Check boundaries
-                x = Math.max(0, Math.min(x, colorContainer.offsetWidth - point.offsetWidth));
-                y = Math.max(0, Math.min(y, colorContainer.offsetHeight - point.offsetHeight));
+                // boundaries of the color picker rectangle
+                const leftBound = colorContainer.getBoundingClientRect().left;
+                const rightBound = colorContainer.getBoundingClientRect().right;
+                const upBound = colorContainer.getBoundingClientRect().top;
+                const downBound = colorContainer.getBoundingClientRect().bottom;
 
-                // 600000 is an arbitrarily large variable to find the exact x and y values that are limited by the color picker container
-                let xBOUND = Math.max(0, Math.min(60000 - colorContainer.getBoundingClientRect().left - point.offsetWidth / 2, colorContainer.offsetWidth - point.offsetWidth));
-                let yBOUND = Math.max(0, Math.min(60000 - colorContainer.getBoundingClientRect().top - point.offsetWidth / 2, colorContainer.offsetWidth - point.offsetWidth));
-
-                // Apply new position
-                // point.style.left = x + "px";
-                // point.style.top = y + "px";
+                let isBound = true;
                 
-                // console.log(Math.max(0, Math.min(colorContainer.getBoundingClientRect().bottom - point.offsetWidth / 2, colorContainer.offsetWidth - point.offsetWidth)));
-                // console.log(Math.max(0, Math.min(colorContainer.getBoundingClientRect().right - point.offsetHeight / 2, colorContainer.offsetHeight - point.offsetHeight)));
+                // checks if the mouse is within the boundaries
+                if ((xPOS >= leftBound && xPOS <= rightBound) && (yPOS >= upBound && yPOS <= downBound)) {
+                    isBound = true;
 
-                // console.log(x);
-                // console.log(y);
+                    console.log(hue + " " + (Math.round(((xPOS - leftBound) / (rightBound - leftBound)) * 100) + "%") + " " + (Math.round(((yPOS - upBound) / (downBound - upBound)) * 100) + "%"));                    
+                } else { isBound = false };
 
-                // console.log(Math.max(0, Math.min(60000 - colorContainer.getBoundingClientRect().left - point.offsetWidth / 2, colorContainer.offsetWidth - point.offsetWidth)));
-
-                //  console.log(event.clientX);
-                // console.log(event.clientY);
-
-                //console.log(colorContainer.getBoundingClientRect().bottom - point.offsetWidth / 2);
-                //console.log(colorContainer.getBoundingClientRect().right - point.offsetHeight / 2);
-
-                // 780    280
             }
         });
-
-        // document.addEventListener("mousemove", function(event) {
-        //     if (isDragging) {
-        //         let xPOS;
-        //         let yPOS;
-        //         let mouseXBound = event.clientX - colorContainer.getBoundingClientRect().left - point.offsetWidth / 2;
-        //         let mouseYBound = event.clientY - colorContainer.getBoundingClientRect().top - point.offsetHeight / 2;
-                
-
-        //         mouseXBound = Math.max(0, Math.min(xPOS, colorContainer.offsetWidth - point.offsetWidth));
-        //         mouseYBound = Math.max(0, Math.min(yPOS, colorContainer.offsetHeight - point.offsetHeight));
-
-        //         // point.style.left = xPOS + "px";
-        //         // point.style.top = yPOS + "px";
-
-        //         let mouseX = event.clientX;
-        //         let mouseY = event.clientY;
-
-        //         //xPOS = event.clientX - 10;
-        //         // yPOS = event.clientY + 280;
-
-        //         //ensures the X coordinate is bound by the color picker box
-        //         if (((event.clientX - 19) > colorContainer.getBoundingClientRect().left - point.offsetWidth / 2) && ((event.clientX - 5) < colorContainer.getBoundingClientRect().right - point.offsetWidth / 2)) {
-        //             xPOS = event.clientX - 10;
-        //         }
-
-        //         if (((event.clientY - 18) > colorContainer.getBoundingClientRect().top - point.offsetHeight / 2) && ((event.clientY + 1) < colorContainer.getBoundingClientRect().bottom - point.offsetHeight / 2)) {
-        //             yPOS = event.clientY + 395;
-        //         }
-
-        //         point.style.left = xPOS + "px";
-        //         point.style.top = yPOS + "px";
-
-        //         // console.log("Mouse pos: " + mouseX + " " + mouseY);
-        //         // console.log("Mouse pos: " + mouseXBound + " " + mouseYBound)
-        //         // console.log(mouseY);
-        //         console.log("Pointer pos: " + xPOS + " " + yPOS);
-
-        //         // console.log(xPOS);
-        //         // console.log(yPOS);
-        //     }
-        // });
 
         document.addEventListener("mouseup", function() {
             isDragging = false;
