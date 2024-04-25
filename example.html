@@ -83,37 +83,37 @@
             colorPicker.style.background = 'linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%), linear-gradient(to right, white, var(--light-color))';            
         });
 
-        // checks to see if the user has started dragging on the color picker
-        colorPicker.addEventListener("mousedown", function(event) {
-            isDragging = true;
-        });
+        // // checks to see if the user has started dragging on the color picker
+        // colorPicker.addEventListener("mousedown", function(event) {
+        //     isDragging = true;
+        // });
 
-        document.addEventListener("mousemove", function(event) {
-            if (isDragging) {
-                let xPOS = event.clientX;
-                let yPOS = event.clientY;
+        // document.addEventListener("mousemove", function(event) {
+        //     if (isDragging) {
+        //         let xPOS = event.clientX;
+        //         let yPOS = event.clientY;
 
-                // boundaries of the color picker rectangle
-                const leftBound = colorContainer.getBoundingClientRect().left;
-                const rightBound = colorContainer.getBoundingClientRect().right;
-                const upBound = colorContainer.getBoundingClientRect().top;
-                const downBound = colorContainer.getBoundingClientRect().bottom;
+        //         // boundaries of the color picker rectangle
+        //         const leftBound = colorContainer.getBoundingClientRect().left;
+        //         const rightBound = colorContainer.getBoundingClientRect().right;
+        //         const upBound = colorContainer.getBoundingClientRect().top;
+        //         const downBound = colorContainer.getBoundingClientRect().bottom;
 
-                let isBound = true;
+        //         let isBound = true;
                 
-                // checks if the mouse is within the boundaries
-                if ((xPOS >= leftBound && xPOS <= rightBound) && (yPOS >= upBound && yPOS <= downBound)) {
-                    isBound = true;
+        //         // checks if the mouse is within the boundaries
+        //         if ((xPOS >= leftBound && xPOS <= rightBound) && (yPOS >= upBound && yPOS <= downBound)) {
+        //             isBound = true;
 
-                    console.log(hue + " " + (Math.round(((xPOS - leftBound) / (rightBound - leftBound)) * 100) + "%") + " " + (Math.round(((yPOS - upBound) / (downBound - upBound)) * 100) + "%"));                    
-                } else { isBound = false };
+        //             console.log(hue + " " + (Math.round(((xPOS - leftBound) / (rightBound - leftBound)) * 100) + "%") + " " + (Math.round(((yPOS - upBound) / (downBound - upBound)) * 100) + "%"));                    
+        //         } else { isBound = false };
 
-            }
-        });
+        //     }
+        // });
 
-        document.addEventListener("mouseup", function() {
-            isDragging = false;
-        });
+        // document.addEventListener("mouseup", function() {
+        //     isDragging = false;
+        // });
     </script>
 </body>
 </html>
