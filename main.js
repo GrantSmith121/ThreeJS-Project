@@ -25,6 +25,19 @@ const point = document.getElementById("point");
 
 let isDragging = false;
 
+const hueInput = document.getElementById("hue-input");
+let root = document.documentElement;
+let lightColor = getComputedStyle(root).getPropertyValue('--light-color');
+
+// boundaries of the color picker rectangle
+const leftBound = colorContainer.getBoundingClientRect().left;
+const rightBound = colorContainer.getBoundingClientRect().right;
+const upBound = colorContainer.getBoundingClientRect().top;
+const downBound = colorContainer.getBoundingClientRect().bottom;
+
+let xPOS = leftBound;
+let yPOS = upBound;
+
 init();
 //animate();
 
@@ -145,6 +158,10 @@ function init() {
 
     // mesh.material.normalScale = new THREE.Vector2( 0.1, 0.1 );
 
+    // parse the HSL values
+    const hslRegex = /hsl\((\d+),\s*([\d.]+)%,\s*([\d.]+)%\)/;
+    const [, hue, saturation, lightness] = lightColor.match(hslRegex);
+
     function hsvToRgb(h, s, v) {
       var r, g, b, i, f, p, q, t;
       if (s === 0) {
@@ -192,6 +209,18 @@ function init() {
       return [r, g, b];
   }
 
+  // ensures that the CSS variable recieves the values as percentages
+  let saturationPercent = (saturation + "%");
+  let lightnessPercent = (lightness + "%");
+
+  // updates the hue value when the hue slider is used
+  hueInput.addEventListener('input', function() {
+    root.style.setProperty('--light-color', `hsl(${hueInput.value}, ${saturationPercent}, ${lightnessPercent})`);
+    // console.log(`Updated light color: ${getComputedStyle(root).getPropertyValue('--light-color')}`);
+    colorPicker.style.background = 'linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%), linear-gradient(to right, white, var(--light-color))';
+    let RGBVal = hsvToRgb(hueInput.value, ((((xPOS - leftBound) / (rightBound - leftBound)) * 1)), ((((yPOS - downBound) / (upBound - downBound)) * 1)));
+    light.color = new THREE.Color((RGBVal[0] * 0.8), (RGBVal[1] * 0.8), (RGBVal[2] * 0.8));
+});
 
     // checks to see if the user has started dragging on the color picker
 colorPicker.addEventListener("mousedown", function(event) {
@@ -200,14 +229,8 @@ colorPicker.addEventListener("mousedown", function(event) {
 
 document.addEventListener("mousemove", function(event) {
   if (isDragging) {
-      let xPOS = event.clientX;
-      let yPOS = event.clientY;
-
-      // boundaries of the color picker rectangle
-      const leftBound = colorContainer.getBoundingClientRect().left;
-      const rightBound = colorContainer.getBoundingClientRect().right;
-      const upBound = colorContainer.getBoundingClientRect().top;
-      const downBound = colorContainer.getBoundingClientRect().bottom;
+      xPOS = event.clientX;
+      yPOS = event.clientY;
 
       let isBound = true;
       
@@ -215,14 +238,8 @@ document.addEventListener("mousemove", function(event) {
       if ((xPOS >= leftBound && xPOS <= rightBound) && (yPOS >= upBound && yPOS <= downBound)) {
           isBound = true;
 
-          //console.log(hue + " " + (Math.round(((xPOS - leftBound) / (rightBound - leftBound)) * 100) + "%") + " " + (Math.round(((yPOS - upBound) / (downBound - upBound)) * 100) + "%"));
-          //light.color = new THREE.Color("hsv(" + hue + ", " + (Math.round(((xPOS - leftBound) / (rightBound - leftBound)) * 100) + "%") + ", " + (Math.round(((yPOS - upBound) / (downBound - upBound)) * 100) + "%") + ")");
-          // let RGBVal = hsvToRgb(0, ((((xPOS - leftBound) / (rightBound - leftBound)) * 1)), ((((yPOS - upBound) / (downBound - upBound)) * 1)));
-          let RGBVal = hsvToRgb(0, ((((xPOS - leftBound) / (rightBound - leftBound)) * 1)), ((((yPOS - downBound) / (upBound - downBound)) * 1)));
-          light.color = new THREE.Color((RGBVal[0] * 0.8), (RGBVal[1] * 0.8), (RGBVal[2] * 0.8));
-          //console.log(new THREE.Color(hsvToRgb(0, (Math.round(((xPOS - leftBound) / (rightBound - leftBound)) * 1)), (Math.round(((yPOS - upBound) / (downBound - upBound)) * 1)))));
-          console.log((hsvToRgb(0, ((((xPOS - leftBound) / (rightBound - leftBound)) * 1)), ((((yPOS - upBound) / (downBound - upBound)) * 1)))));
-          //console.log(hsvToRgb(0, .5, 1));        
+          let RGBVal = hsvToRgb(hueInput.value, ((((xPOS - leftBound) / (rightBound - leftBound)) * 1)), ((((yPOS - downBound) / (upBound - downBound)) * 1)));
+          light.color = new THREE.Color((RGBVal[0] * 0.8), (RGBVal[1] * 0.8), (RGBVal[2] * 0.8));  
       } else { isBound = false };
 
   }
