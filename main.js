@@ -145,28 +145,52 @@ function init() {
 
     // mesh.material.normalScale = new THREE.Vector2( 0.1, 0.1 );
 
-    // credit to "mjackson" on GitHub for this algorithm!
     function hsvToRgb(h, s, v) {
-      var r, g, b;
-    
-      var i = Math.floor(h * 6);
-      var f = h * 6 - i;
-      var p = v * (1 - s);
-      var q = v * (1 - f * s);
-      var t = v * (1 - (1 - f) * s);
-    
-      switch (i % 6) {
-        case 0: r = v, g = t, b = p; break;
-        case 1: r = q, g = v, b = p; break;
-        case 2: r = p, g = v, b = t; break;
-        case 3: r = p, g = q, b = v; break;
-        case 4: r = t, g = p, b = v; break;
-        case 5: r = v, g = p, b = q; break;
+      var r, g, b, i, f, p, q, t;
+      if (s === 0) {
+          r = g = b = v;
+          return [r, g, b];
       }
-    
-      return [ r * 255, g * 255, b * 255 ];
-    }
-
+      h /= 60;
+      i = Math.floor(h);
+      f = h - i;
+      p = v * (1 - s);
+      q = v * (1 - s * f);
+      t = v * (1 - s * (1 - f));
+      switch (i) {
+          case 0:
+              r = v;
+              g = t;
+              b = p;
+              break;
+          case 1:
+              r = q;
+              g = v;
+              b = p;
+              break;
+          case 2:
+              r = p;
+              g = v;
+              b = t;
+              break;
+          case 3:
+              r = p;
+              g = q;
+              b = v;
+              break;
+          case 4:
+              r = t;
+              g = p;
+              b = v;
+              break;
+          default:
+              r = v;
+              g = p;
+              b = q;
+              break;
+      }
+      return [r, g, b];
+  }
 
 
     // checks to see if the user has started dragging on the color picker
@@ -193,8 +217,9 @@ document.addEventListener("mousemove", function(event) {
 
           //console.log(hue + " " + (Math.round(((xPOS - leftBound) / (rightBound - leftBound)) * 100) + "%") + " " + (Math.round(((yPOS - upBound) / (downBound - upBound)) * 100) + "%"));
           //light.color = new THREE.Color("hsv(" + hue + ", " + (Math.round(((xPOS - leftBound) / (rightBound - leftBound)) * 100) + "%") + ", " + (Math.round(((yPOS - upBound) / (downBound - upBound)) * 100) + "%") + ")");
-          let RGBVal = hsvToRgb(0, ((((xPOS - leftBound) / (rightBound - leftBound)) * 1)), ((((yPOS - upBound) / (downBound - upBound)) * 1)));
-          light.color = new THREE.Color(RGBVal[0], RGBVal[1], RGBVal[2]);
+          // let RGBVal = hsvToRgb(0, ((((xPOS - leftBound) / (rightBound - leftBound)) * 1)), ((((yPOS - upBound) / (downBound - upBound)) * 1)));
+          let RGBVal = hsvToRgb(0, ((((xPOS - leftBound) / (rightBound - leftBound)) * 1)), ((((yPOS - downBound) / (upBound - downBound)) * 1)));
+          light.color = new THREE.Color((RGBVal[0] * 0.8), (RGBVal[1] * 0.8), (RGBVal[2] * 0.8));
           //console.log(new THREE.Color(hsvToRgb(0, (Math.round(((xPOS - leftBound) / (rightBound - leftBound)) * 1)), (Math.round(((yPOS - upBound) / (downBound - upBound)) * 1)))));
           console.log((hsvToRgb(0, ((((xPOS - leftBound) / (rightBound - leftBound)) * 1)), ((((yPOS - upBound) / (downBound - upBound)) * 1)))));
           //console.log(hsvToRgb(0, .5, 1));        
