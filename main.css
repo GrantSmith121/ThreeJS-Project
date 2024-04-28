@@ -76,7 +76,8 @@ body {
   }
 
   .article-body {
-    margin: 2em;
+    margin-left: 8em;
+    margin-right: 8em;
   }
 
   .article-button {
