@@ -130,7 +130,12 @@ function init() {
     // slider controller for normal map intensity
     rangeInput.addEventListener('input', function() {
       mesh.material.normalScale = new THREE.Vector2( rangeInput.value / 100, rangeInput.value / 100 );
-    })
+    });
+
+    picker.addEventListener('input', function() {
+      console.log(picker.value);
+      light.color = new THREE.Color(picker.value);
+    });
 }
 
 
