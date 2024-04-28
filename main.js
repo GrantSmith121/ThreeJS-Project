@@ -29,6 +29,8 @@ const hueInput = document.getElementById("hue-input");
 let root = document.documentElement;
 let lightColor = getComputedStyle(root).getPropertyValue('--light-color');
 
+
+
 // boundaries of the color picker rectangle
 const leftBound = colorContainer.getBoundingClientRect().left;
 const rightBound = colorContainer.getBoundingClientRect().right;
@@ -239,8 +241,24 @@ document.addEventListener("mousemove", function(event) {
           isBound = true;
 
           let RGBVal = hsvToRgb(hueInput.value, ((((xPOS - leftBound) / (rightBound - leftBound)) * 1)), ((((yPOS - downBound) / (upBound - downBound)) * 1)));
-          light.color = new THREE.Color((RGBVal[0] * 0.8), (RGBVal[1] * 0.8), (RGBVal[2] * 0.8));  
+          light.color = new THREE.Color((RGBVal[0] * 0.8), (RGBVal[1] * 0.8), (RGBVal[2] * 0.8)); 
+          
+          point.style.left = xPOS + "px";
+          // point.style.left = ((xPOS - leftBound) / (rightBound - leftBound)) + "px";
+          point.style.top = yPOS + (downBound - upBound) + "px";
+
+          // point.style.x = xPOS;
+          // point.style.y = yPOS;
+
+          console.log(yPOS);
+          console.log(point.style.top);
       } else { isBound = false };
+
+      // point.style.left = ((xPOS - leftBound) / (rightBound - leftBound)) + "px";
+      // point.style.top = ((yPOS - downBound) / (upBound - downBound)) + "px";
+
+      // point.style.left = xPOS + "px";
+      // point.style.top = yPOS + "px";
 
   }
 });

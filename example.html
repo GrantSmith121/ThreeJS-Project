@@ -69,19 +69,19 @@
         let isDragging = false;
 
         // parse the HSL values
-        const hslRegex = /hsl\((\d+),\s*([\d.]+)%,\s*([\d.]+)%\)/;
-        const [, hue, saturation, lightness] = lightColor.match(hslRegex);
+        // const hslRegex = /hsl\((\d+),\s*([\d.]+)%,\s*([\d.]+)%\)/;
+        // const [, hue, saturation, lightness] = lightColor.match(hslRegex);
 
-        // ensures that the CSS variable recieves the values as percentages
-        let saturationPercent = (saturation + "%");
-        let lightnessPercent = (lightness + "%");
+        // // ensures that the CSS variable recieves the values as percentages
+        // let saturationPercent = (saturation + "%");
+        // let lightnessPercent = (lightness + "%");
 
-        // updates the hue value when the hue slider is used
-        hueInput.addEventListener('input', function() {
-            root.style.setProperty('--light-color', `hsl(${hueInput.value}, ${saturationPercent}, ${lightnessPercent})`);
-            // console.log(`Updated light color: ${getComputedStyle(root).getPropertyValue('--light-color')}`);
-            colorPicker.style.background = 'linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%), linear-gradient(to right, white, var(--light-color))';            
-        });
+        // // updates the hue value when the hue slider is used
+        // hueInput.addEventListener('input', function() {
+        //     root.style.setProperty('--light-color', `hsl(${hueInput.value}, ${saturationPercent}, ${lightnessPercent})`);
+        //     // console.log(`Updated light color: ${getComputedStyle(root).getPropertyValue('--light-color')}`);
+        //     colorPicker.style.background = 'linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%), linear-gradient(to right, white, var(--light-color))';            
+        // });
     </script>
 </body>
 </html>
