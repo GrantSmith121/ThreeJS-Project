@@ -172,13 +172,18 @@ button:hover {
   background: black;
 }
 
-.back-button {
+.back-button-section {
   display: flex;
   justify-content: center;
-  padding: 8em;
+  /* padding: 8em; */
   font-family: "Red Hat Display", sans-serif;
   font-weight: 400;
   font-size: 2em;
+  padding: 8em;
+}
+
+.back-button {
+
 }
 
 .color-picker {
