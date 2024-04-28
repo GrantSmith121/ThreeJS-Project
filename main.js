@@ -14,9 +14,6 @@ const foamButton = document.getElementById("foam");
 const leatherButton = document.getElementById("leather");
 const tilesButton = document.getElementById("tiles");
 
-const rangeInput = document.getElementById("rangeInput");
-let normalIntensity = 1;
-
 init();
 //animate();
 
@@ -133,10 +130,15 @@ function init() {
     // slider controller for normal map intensity
     rangeInput.addEventListener('input', function() {
       mesh.material.normalScale = new THREE.Vector2( rangeInput.value / 100, rangeInput.value / 100 );
-    })
+    });
 
-    // mesh.material.normalScale = new THREE.Vector2( 0.1, 0.1 );
+    picker.addEventListener('input', function() {
+      console.log(picker.value);
+      light.color = new THREE.Color(picker.value);
+    });
 }
+
+
 
 function render() {
     renderer.render( scene, camera );

@@ -1,3 +1,7 @@
+:root {
+  --light-color: hsl(0, 100%, 50%);
+}
+
 #NormalMapBG {
     display: block;
     position: absolute;
@@ -175,4 +179,92 @@ button:hover {
   font-family: "Red Hat Display", sans-serif;
   font-weight: 400;
   font-size: 2em;
+}
+
+.color-picker {
+  width: 800px;
+  height: 300px;
+  cursor: pointer;
+  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%), linear-gradient(to right, white, var(--light-color));
+
+  margin: 1em;
+}
+
+#point {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: green;
+  cursor: move;
+}
+
+.hue-slider {
+  writing-mode: vertical-lr;
+  -webkit-appearance: none;
+  width: 25px;
+  /* height: 500px; */
+  background: linear-gradient(180deg, #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff, #ff0000);
+}
+
+.hue-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  background: var(--light-color);
+  /* background: linear-gradient(180deg, var(--light-color), white); */
+  border: 5px solid black;
+}
+
+.hue-slider::-moz-range-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  background: var(--light-color);
+  /* background: linear-gradient(180deg, var(--light-color), white); */
+  border: 5px solid black;
+}
+
+.picker-and-slider {
+  display: flex;
+}
+
+.picker-section {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 2em;
+}
+
+.picker-box {
+  /* width: 100%;
+  display: flex;
+  justify-content: center; */
+
+  /* position: relative;
+  overflow: hidden; */
+  /* width: 40px;
+  height: 40px; */
+  
+  position: relative;
+  overflow: hidden;
+  width: 80px;
+  height: 80px;
+  border: solid 2px black;
+  /* border-radius: 40px; */
+  /* display: flex;
+  justify-content: center;
+  
+  margin: 2em; */
+}
+
+/* 40 - 56 */
+#picker {
+  /* margin: 3em; */
+  /* border: none; */
+  position: absolute;
+  right: -8px;
+  top: -8px;
+  width: 95px;
+  height: 95px;
+  border: none;
+  
 }
