@@ -12,7 +12,7 @@ __1. Dynamic lighting:__ The background utilizes normal maps to simulate dynamic
 
 __2. Interactivity:__ The light source for the background follows the mouse. This creates a level of interactivity with the user and emphasizes wherever the user decides to take the mouse.
 
-__3. Tools__ For this demonstration, the user can alter different apsects of the background. They can choose a different background, increase/decrease the strength of the 3D effect and choose the color of the light source.
+__3. Tools__: For this demonstration, the user can alter different apsects of the background. They can choose a different background, increase/decrease the strength of the 3D effect and choose the color of the light source.
 
 ## Applications
 
