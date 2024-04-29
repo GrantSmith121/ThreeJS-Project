@@ -1,6 +1,20 @@
-# ThreeJS Project
+# ThreeJS Dynamic Background
 
-This project was created to create a prototype for a specific concept I had. I wanted to use the power of normal maps to give a site a patterned background that has dynamic lighting.
+This project was created to create a prototype for a specific concept I had. I wanted to use the power of normal maps to give a site a patterned background that has dynamic lighting. The goal was to use this technology to create a unique, attention-grabbing effect for a web site.
 
-To achieve this, I used ThreeJS, a 3D JavaScript library that allows developers to insert 3D meshes with unique materials. Most often, it is used to create elements on a site that rotate, morph or otherwise provide
-a number of impressive effects. In this project, I used it to create a background for a site. The light source follows the mouse so that the light always appears to be coming in from an angle based on the mouse position. This creates a unique, interactive effect. This project serves as an excercise in web development as well as a prototype of this concept. This could be used in a number of different ways to create an attention-grabbing effect for a user.
+## Introduction
+
+The project showcases the power of ThreeJS, a versatile 3D JavaScript library commonly used to integrate 3D elements into web applications. Although it is most commonly used to create 3D effects that are more "obviously" 3D, I used it here to create a background. Backgrounds are usually flat, but, using normal maps, I am able to create something a bit more dynamic and interesting.
+
+## Features
+
+__1. Dynamic lighting:__ The background utilizes normal maps to simulate dynamic lighting effects, creating the illusion of depth.
+
+__2. Interactivity:__ The light source for the background follows the mouse. This creates a level of interactivity with the user and emphasizes wherever the user decides to take the mouse.
+
+__3. Tools__ For this demonstration, the user can alter different apsects of the background. They can choose a different background, increase/decrease the strength of the 3D effect and choose the color of the light source.
+
+## Applications
+
+* __User Engagement__: Enhance user experience by providing visually captivating backgrounds that respond to user interaction.
+* __Storytelling__: Use dynamic backgrounds to convey narratives or themes, adding depth and immersion to content.
